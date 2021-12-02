@@ -15,17 +15,15 @@ func starOne(input []int) {
 }
 
 func starTwo(input []int) {
-	var output []int
-	for i := 0; i < len(input) - 2; i++ {
-		sum := input[i] + input[i + 1] + input[i + 2]
-		output = append(output, sum)
-	}
-
 	var sum = 0
-	for i := 1; i < len(output); i++ {
-		if output[i] > output[i - 1] {
+	var previousSum = input[0] + input[1] + input[2]
+	var currentSum = 0
+	for i := 1; i < len(input) - 2; i++ {
+		currentSum = input[i] + input[i + 1] + input[i + 2]
+		if currentSum > previousSum {
 			sum += 1
 		}
+		previousSum = currentSum
 	}
 	fmt.Println(sum, "sums are larger than the previous sum")
 }
